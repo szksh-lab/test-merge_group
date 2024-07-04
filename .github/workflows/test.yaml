@@ -1,0 +1,14 @@
+---
+name: test merge_group
+on:
+  pull_request:
+  merge_group:
+jobs:
+  foo:
+    timeout-minutes: 30
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "$GITHUB_EVENT_NAME"
+      - run: echo "$PAYLOAD"
+        env:
+          PAYLOAD: ${{toJson(github)}}
