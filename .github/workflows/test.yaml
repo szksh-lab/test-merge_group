@@ -3,6 +3,10 @@ name: test merge_group
 on:
   pull_request:
   merge_group:
+  issues:
+    types: [opened, edited]
+  issue_comment:
+    types: [created]
 jobs:
   foo:
     timeout-minutes: 30

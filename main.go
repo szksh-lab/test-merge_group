@@ -15,10 +15,10 @@ func main() {
 
 func core() error {
 	p := cienv.Get(nil)
-	n, err := p.PRNumber()
+	n, err := p.Number()
 	if err != nil {
 		return err
 	}
-	fmt.Printf("PRNumber: %v\n", n)
+	fmt.Printf("Number: %v\n", n)
 	return nil
 }
