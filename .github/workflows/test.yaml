@@ -8,7 +8,7 @@ jobs:
     timeout-minutes: 30
     runs-on: ubuntu-latest
     steps:
-      - run: echo "$GITHUB_EVENT"
+      - run: echo "$GITHUB_EVENT_NAME"
       - run: echo "$PAYLOAD"
         env:
           PAYLOAD: ${{toJson(github)}}
