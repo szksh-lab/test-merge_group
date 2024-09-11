@@ -2,6 +2,7 @@
 name: test merge_group
 on:
   pull_request:
+    types: [opened, synchronize, dequeued]
   merge_group:
   issues:
     types: [opened, edited]
