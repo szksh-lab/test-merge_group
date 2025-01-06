@@ -1,48 +1,14 @@
 ---
 name: test merge_group
 on:
-  pull_request:
-    types: [opened, synchronize, dequeued]
-  merge_group: null
-  issues:
-    types: [opened, edited]
-  issue_comment:
-    types: [created]
+  merge_group: {}
+  pull_request: {}
 jobs:
   foo:
-    timeout-minutes: 30
-    permissions:
-      contents: write
-      pull-requests: write
+    timeout-minutes: 10
+    permissions: {}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        with:
-          persist-credentials: false
-      - uses: aquaproj/aqua-installer@6ce1f8848ec8e61f14d57bd5d7597057a6dd187c # v3.0.1
-        with:
-          aqua_version: v2.29.0
+      - run: ":"
         env:
-          GITHUB_TOKEN: ${{github.token}}
-      - run: github-comment post --template "hello"
-        env:
-          GITHUB_TOKEN: ${{github.token}}
-      - run: ci-info run
-        env:
-          GITHUB_TOKEN: ${{github.token}}
-      - run: terraform init
-      - run: tfcmt plan -- terraform plan
-        env:
-          GITHUB_TOKEN: ${{github.token}}
-      - run: echo "$GITHUB_EVENT_NAME"
-      - run: echo "$GITHUB_REF"
-      - run: echo "$GITHUB_HEAD_REF"
-      - run: echo "$GITHUB_REF_NAME"
-      - run: echo "$GITHUB_SHA"
-      - run: echo "$PAYLOAD"
-        env:
-          PAYLOAD: ${{toJson(github)}}
-      - uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
-        with:
-          go-version-file: go.mod
-      - run: go run main.go
+          PAYLOAD: ${{ toJSON(github.event) }}
