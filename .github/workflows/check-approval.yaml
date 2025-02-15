@@ -17,5 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
+      contents: read
     steps:
       - uses: suzuki-shunsuke/deny-self-approve-action@85a0ec0a189b083a84a95d37766f6f6df5aea1ba # v0.1.0
