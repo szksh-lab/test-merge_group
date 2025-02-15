@@ -4,6 +4,14 @@ on:
   merge_group:
 permissions: {}
 jobs:
+  foo:
+    timeout-minutes: 10
+    permissions: {}
+    runs-on: ubuntu-latest
+    steps:
+      - run: ":"
+        env:
+          PAYLOAD: ${{ toJSON(github.event) }}
   check-approval:
     timeout-minutes: 10
     runs-on: ubuntu-latest

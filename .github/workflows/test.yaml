@@ -1,7 +1,6 @@
 ---
 name: test merge_group
 on:
-  merge_group: {}
   pull_request: {}
 jobs:
   foo:
