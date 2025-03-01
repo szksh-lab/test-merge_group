@@ -18,4 +18,4 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - uses: suzuki-shunsuke/deny-self-approve-action@85a0ec0a189b083a84a95d37766f6f6df5aea1ba # v0.1.0
+      - uses: suzuki-shunsuke/deny-self-approve-action@9ee0a3ee1ed44415a065b05291560487c7847db3 # v0.2.0
