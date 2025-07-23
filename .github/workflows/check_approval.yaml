@@ -8,6 +8,7 @@ on:
 jobs:
   validate-pr-review:
     runs-on: ubuntu-24.04
+    if: github.event_name == 'merge_group'
     timeout-minutes: 5
     permissions:
       pull-requests: read # To get pull requests
