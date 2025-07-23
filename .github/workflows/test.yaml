@@ -1,13 +1,20 @@
 ---
-name: test merge_group
+name: test (merge_group)
 on:
-  pull_request: {}
+  merge_group:
+  pull_request:
+permissions: {}
 jobs:
-  foo:
+  status-check:
     timeout-minutes: 10
     permissions: {}
     runs-on: ubuntu-latest
+    needs: test
+    if: always() && (contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled'))
     steps:
-      - run: ":"
-        env:
-          PAYLOAD: ${{ toJSON(github.event) }}
+      - run: exit 1
+  test:
+    uses: ./.github/workflows/workflow_call_test.yaml
+    permissions:
+      pull-requests: read # To get pull requests
+      contents: read # To get pull request commits
