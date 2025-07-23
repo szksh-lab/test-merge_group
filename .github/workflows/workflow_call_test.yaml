@@ -11,13 +11,3 @@ jobs:
       - run: ":"
         env:
           PAYLOAD: ${{ toJSON(github.event) }}
-  validate-pr-review:
-    # if: github.event_name == 'merge_group'
-    runs-on: ubuntu-24.04
-    timeout-minutes: 5
-    permissions:
-      pull-requests: read # To get pull requests
-      contents: read # To get pull request commits
-    steps:
-      - uses: suzuki-shunsuke/validate-pr-review-action@pr/182
-
