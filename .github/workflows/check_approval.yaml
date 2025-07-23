@@ -1,0 +1,17 @@
+name: Validate pull request reviews
+on:
+  pull_request_review:
+    types:
+      - submitted
+      - dismissed
+  merge_group:
+jobs:
+  validate-pr-review:
+    runs-on: ubuntu-24.04
+    if: github.event_name == 'merge_group'
+    timeout-minutes: 5
+    permissions:
+      pull-requests: read # To get pull requests
+      contents: read # To get pull request commits
+    steps:
+      - uses: suzuki-shunsuke/validate-pr-review-action@bd967a12742566a5e3fb02878e4e2447da68f72e # v0.0.4
